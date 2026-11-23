@@ -1,0 +1,60 @@
+@startuml
+skinparam classAttributeIconSize 0
+interface BankingOperations {
+  +addCustomer(Customer)
+  +openAccount(BankAccount)
+  +deposit(String, BigDecimal)
+  +withdraw(String, BigDecimal)
+  +transfer(String, String, BigDecimal)
+  +findAccount(String): BankAccount
+}
+class BankingService
+class Customer {
+  -customerId: String
+  -name: String
+  -phone: String
+  +equals(Object): boolean
+  +hashCode(): int
+  +toString(): String
+}
+abstract class BankAccount {
+  -accountNumber: String
+  -customer: Customer
+  -balance: BigDecimal
+  +deposit(BigDecimal)
+  +withdraw(BigDecimal)
+  +getAccountType(): String
+  +getMinimumBalance(): BigDecimal
+}
+class SavingsAccount {
+  -interestRate: BigDecimal
+}
+class CurrentAccount {
+  -overdraftLimit: BigDecimal
+  +withdraw(BigDecimal)
+}
+class Transaction {
+  -transactionId: String
+  -type: Type
+  -amount: BigDecimal
+  -timestamp: LocalDateTime
+}
+class BankingApplication
+class BankingException
+class InsufficientFundsException
+class InvalidAmountException
+class AccountNotFoundException
+class DuplicateAccountException
+BankingOperations <|.. BankingService
+BankAccount <|-- SavingsAccount
+BankAccount <|-- CurrentAccount
+BankAccount --> Customer
+BankingService o-- Customer
+BankingService o-- BankAccount
+BankingService o-- Transaction
+BankingApplication --> BankingService
+BankingException <|-- InsufficientFundsException
+BankingException <|-- InvalidAmountException
+BankingException <|-- AccountNotFoundException
+BankingException <|-- DuplicateAccountException
+@enduml

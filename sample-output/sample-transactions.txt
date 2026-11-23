@@ -1,0 +1,43 @@
+BANKING MANAGEMENT SYSTEM — REPRESENTATIVE OUTPUT
+(Amounts and balances shown are illustrative; transaction IDs/timestamps are generated at runtime.)
+
+=== BANKING MANAGEMENT SYSTEM ===
+1. Create customer and account
+2. Deposit
+3. Withdraw
+4. Transfer
+5. Check balance
+6. List accounts
+7. Transaction history
+8. Run concurrent deposit demo
+0. Exit
+
+Choose: 2
+Account number: 1001001
+Amount: 1500
+Deposit successful.
+
+Choose: 5
+Account number: 1001001
+Balance: 6500.00
+
+Choose: 3
+Account number: 1001001
+Amount: 500
+Withdrawal successful.
+
+Choose: 4
+From: 1001001
+To: 2002001
+Amount: 1000
+Transfer successful.
+
+Choose: 8
+Concurrent deposits completed. New balance: 5500.00
+(The concurrent demo starts from the seeded ₹5,000 balance when run before other transactions.)
+
+Example validation messages:
+Operation failed: Insufficient balance in account 1001001
+Operation failed: Amount must be greater than zero.
+Operation failed: Account not found: 9999999
+Operation failed: Account number already exists.
